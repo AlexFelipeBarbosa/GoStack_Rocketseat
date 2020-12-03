@@ -1,4 +1,5 @@
 const express = require("express");
+const { uuid } = require("uuidv4");
 
 const app = express();
 
@@ -17,31 +18,59 @@ Route Params: Identificar recursos (Atualizar/Deletar)
 Request Params: Conteúdo na hora de criar ou editar um recurso (JSON)
 */
 
-app.get("/projects", (request, response) => {
-  const { title, owner } = request.query;
-  console.log(title);
-  console.log(owner);
+const projects = [];
 
-  return response.json(["Projeto 1", "Projeto2"]);
+app.get("/projects", (request, response) => {
+  const { title } = request.query;
+
+  const results = title
+    ? projects.filter((project) => project.title.includes(title))
+    : projects;
+
+  return response.json(results);
 });
 
 app.post("/projects", (request, response) => {
-  const body = request.body;
-  console.log(body);
+  const { title, owner } = request.body;
+  const project = { id: uuid(), title, owner };
 
-  return response.json(["Projeto 1", "Projeto2", "Projeto3"]);
+  projects.push(project);
+
+  return response.json(project);
 });
 
 app.put("/projects/:id", (request, response) => {
-  const params = request.params;
+  const { id } = request.params;
+  const { title, owner } = request.body;
 
-  console.log(params);
+  const projectIndex = projects.findIndex((project) => project.id === id);
 
-  return response.json(["Projeto 5", "Projeto2", "Projeto3"]);
+  if (projectIndex < 0) {
+    return response.status(400).json({ error: "Project Not Found!" });
+  }
+
+  const project = {
+    id,
+    title,
+    owner,
+  };
+
+  projects[projectIndex] = project;
+  return response.json(project);
 });
 
 app.delete("/projects/:id", (request, response) => {
-  return response.json(["Projeto2", "Projeto3"]);
+  const { id } = request.params;
+
+  const projectIndex = projects.findIndex((project) => project.id === id);
+
+  if (projectIndex < 0) {
+    return response.status(400).json({ error: "Project Not Found!" });
+  }
+
+  projects.splice(projectIndex, 1);
+
+  return response.status(204).send();
 });
 
 app.listen(3333, () => {
