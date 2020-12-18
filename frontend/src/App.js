@@ -3,6 +3,8 @@ Colocar sempre com letra maiuscula no começo.
 ex: App.js
 */
 import React, { useState } from "react";
+import "./App.css";
+import backgroundImage from "./assets/background.jpeg";
 import Header from "./components/Header";
 
 /* 3 Conceitos importantes do React.
@@ -33,6 +35,8 @@ function App() {
     // Utilizando o conceito de fragment <>  </>
     <>
       <Header title="Projects" />
+
+      <img width={300} src={backgroundImage} />
 
       <ul>
         {projects.map((project) => (
