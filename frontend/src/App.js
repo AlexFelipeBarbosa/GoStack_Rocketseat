@@ -28,11 +28,18 @@ function App() {
    * 2. Função para atualizarmos esse valor.
    */
 
-  function handleAddProject() {
+  async function handleAddProject() {
     //  projects.push(`Novo Projeto ${Date.now()}`);
-    setProjects([...projects, `Novo Projeto ${Date.now()}`]); // utilizando o conceito de imutabilidade
+    //setProjects([...projects, `Novo Projeto ${Date.now()}`]); // utilizando o conceito de imutabilidade
 
-    console.log(projects);
+    const response = await api.post("projects", {
+      title: "BackEnd com NodeJs",
+      owner: "Alex Barbosa",
+    });
+
+    const project = response.data;
+
+    setProjects([...projects, project]);
   }
 
   return (
