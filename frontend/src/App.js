@@ -2,7 +2,8 @@
 Colocar sempre com letra maiuscula no começo.
 ex: App.js
 */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import api from "./services/api";
 import "./App.css";
 import backgroundImage from "./assets/background.jpeg";
 import Header from "./components/Header";
@@ -18,6 +19,12 @@ function App() {
     "Desenvolvimento de app",
     "Front-End web",
   ]);
+
+  useEffect(() => {
+    api.get("projects").then((response) => {
+      console.log(response);
+    });
+  }, []);
 
   /* useState retorna um array com 2 posições.
    * 1. Variável com o seu valor inicial.
@@ -35,8 +42,6 @@ function App() {
     // Utilizando o conceito de fragment <>  </>
     <>
       <Header title="Projects" />
-
-      <img width={300} src={backgroundImage} />
 
       <ul>
         {projects.map((project) => (
