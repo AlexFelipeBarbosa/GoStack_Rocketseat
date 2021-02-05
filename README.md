@@ -9,7 +9,7 @@
 
 
 ## :airplane: Conteúdo do curso:
-- [ ] <b>Conceitos importantes</b>
+- [X] <b>Conceitos importantes</b>
     - TypeScript
     - Insomnia
     - Babel
@@ -17,7 +17,7 @@
     - Axios
     - SDK
     - Docker   
-- [ ] <b>Primeiro projeto com Node.js</b>
+- [X] <b>Primeiro projeto com Node.js</b>
     - Express
     - ts-node-dev
     - ESLint
