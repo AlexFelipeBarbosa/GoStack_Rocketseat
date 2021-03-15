@@ -26,6 +26,16 @@
     "prettier"
   ],
   "rules": {
+    "camelcase": "off",
+    //  " @ typescript-eslint / camelcase " : [ " off " ]
+    "@typescript-eslint/naming-convention": [
+      "off",
+      {
+        "selector": "default",
+        "format": null
+      }
+    ],
+
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "prettier/prettier": "error",
@@ -35,6 +45,12 @@
       "extensions": [".tsx"]
     }],
     "import/prefer-default-export": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowExpressions": true
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
