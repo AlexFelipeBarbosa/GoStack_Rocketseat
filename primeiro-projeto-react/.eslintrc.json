@@ -27,7 +27,6 @@
   ],
   "rules": {
     "camelcase": "off",
-    //  " @ typescript-eslint / camelcase " : [ " off " ]
     "@typescript-eslint/naming-convention": [
       "off",
       {
@@ -35,7 +34,7 @@
         "format": null
       }
     ],
-
+    "react/jsx-one-expression-per-line": "off",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "prettier/prettier": "error",
