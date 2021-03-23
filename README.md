@@ -23,14 +23,14 @@
     - ESLint
     - Prettier
     - EditorConfig
-- [ ] <b>Iniciando back-end do GoBarber</b>
+- [X] <b>Iniciando back-end do GoBarber</b>
     - TypeORM
     - PostgreSQL
     - JWT
     - Multer
     - S3
     - Sentry
-- [ ] <b>Primeiro projeto ReactJS</b>
+- [X] <b>Primeiro projeto ReactJS</b>
     - TypeScript
     - create-react-app
     - EditorConfig
